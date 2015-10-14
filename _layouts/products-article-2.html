@@ -1,0 +1,102 @@
+---
+layout: default
+---
+<div class="banner"><img src="{{ site.url }}/images/pages/{{ page.category }}.jpg"></div>
+<div class="wrapper clearfix">
+  <div class="location">Location: Home > {{ page.series }} > <span class="cur">{{ page.title }}</span><a href="{{ site.url }}/{{ page.type }}/">RETURN TO LIST</a></div>
+  <div class="rows clearfix" style="border: none;">
+    <div class="pic-big-area">
+      <h1>{{ page.title }}</h1>
+      <div class="picbox">
+        <a id="bigpic" href="{{ site.url }}/images/products/{{ page.image }}-1.jpg"><img src="{{ site.url }}/images/products/{{ page.image }}-1.jpg" width="605"></a>
+      </div>
+    </div>
+    <div class="pic-small-area">
+      <a id="btn-pic-prev" href="javascript:void(0);"><img src="{{ site.url }}/images/assets/btn-pic-prev.jpg"></a>
+      <span class="cur"><img src="{{ site.url }}/images/assets/p3.gif"></span>
+      <div class="list">
+        <ul>
+          <li><a href="javascript:void(0);" onclick="switchPic(this, '{{ site.url }}/images/products/{{ page.image }}-1.jpg', '0')"><img src="{{ site.url }}/images/products/{{ page.image }}-1-small.jpg" width="182"></a></li>
+          <li><a href="javascript:void(0);" onclick="switchPic(this, '{{ site.url }}/images/products/{{ page.image }}-2.jpg', '0')"><img src="{{ site.url }}/images/products/{{ page.image }}-2-small.jpg" width="182"></a></li>
+        </ul>
+      </div>
+      <a id="btn-pic-next" href="javascript:void(0);"><img src="{{ site.url }}/images/assets/btn-pic-next.jpg"></a>
+    </div>
+  </div>
+  <div class="block h50"></div>
+  {{ content }}
+  <div class="block h50"></div>
+  <div class="rows clearfix">
+    <div class="related">
+      <h1 class="title"></h1>
+        <div class="info">
+          <div class="f">
+            <div id="scrollpro" class="list">
+              <ul>{% for post in site.categories["products"] %}{% if post.type == page.type %}
+                <li>
+                  <dl>
+                    <dt><a href="{{ site.url }}{{ post.url }}"><img src="{{ site.url }}/images/products/{{ post.image }}-1-small.jpg" height="142"></a></dt>
+                    <dd><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></dd>
+                  </dl>
+                </li>{% endif %}{% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <div class="block h50"></div>
+        <script type="text/javascript">
+            $(function() {
+                var _list_pic_index = 0;
+                $('#bigpic img').imageAutoSize(605, 375);
+                //$('.pic-small-area .list li').css({'width': '182px', 'height': '137px'}).find('img').imageAutoSize(182, 137);
+                $('#bigpic').fancybox();
+                $('#btn-pic-prev,#btn-pic-next').on('click', function() {
+                    var _offset = parseInt($('.pic-small-area .list ul').css('top'));
+                    var _height = parseInt($('.pic-small-area .list ul').height());
+                    var _endoff = (_height - (137 + 10) * 3) * -1;
+                    var _pic_count = $('.pic-small-area .list ul li').length;
+                    switch ($(this).attr('id')) {
+                        //case 'btn-pic-prev':
+                        case 'btn-pic-next':
+                            if (_offset <= 0 && _offset >= _endoff) {
+                                $('.pic-small-area .list ul').stop().animate({top: (_offset - 137) + 'px'}, 'slow');
+                            }
+                            //_list_pic_index = _list_pic_index >= _pic_count ? _pic_count - 1 : _list_pic_index + 1;
+                            //$('.pic-small-area .list ul li').eq(_list_pic_index).find('a').click();
+                            break;
+                            //case 'btn-pic-next':
+                        case 'btn-pic-prev':
+                            if (_offset < 0) {
+                                $('.pic-small-area .list ul').stop().animate({top: (_offset + 137) + 'px'}, 'slow');
+                            }
+                            //_list_pic_index = _list_pic_index <= 0 ? 0 : _list_pic_index - 1;
+                            //$('.pic-small-area .list ul li').eq(_list_pic_index).find('a').click();
+                            break;
+                    }
+                });
+
+                $('#tabs .tabs a').click(function() {
+                    $('#tabs .tabs a').removeClass('tabs-btn-on');
+                    $('#tabs .info').removeClass('active');
+                    $(this).addClass('tabs-btn-on');
+                    $('#tabs .info').eq($(this).attr('i')).addClass('active');
+                });
+
+                $("#scrollpro").imgscroll({
+                    speed: 30, //图片滚动速度
+                    amount: 0, //图片滚动过渡时间
+                    width: 1, //图片滚动步数
+                    dir: "left"   // "left" 或 "up" 向左或向上滚动
+                });
+                $("#scrollpro img").imageAutoSize(175, 142);
+            });
+
+            function switchPic(obj, $pic, $index) {
+                _list_pic_index = parseInt($index);
+                $('#bigpic').attr('href', $pic).find('img').attr('src', $pic).imageAutoSize(605, 375);
+                $('.pic-small-area .cur').stop().animate({top: ($(obj).offset().top - $('.list').offset().top - ($(obj).height() / 2)) + 'px'}, 'slow');
+            }
+        </script>

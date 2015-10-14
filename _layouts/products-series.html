@@ -1,0 +1,9 @@
+---
+layout: products
+---
+<div class="prolist">{% for post in site.categories["products"] %}{% if post.type == page.type %}
+  <dl>
+    <dt><a href="{{ site.url }}{{ post.url }}"><img src="{{ site.url }}/images/products/{{ post.image }}-1-small.jpg" alt="{{ post.title }}" onload="autoimg(this,142,142)" width="142" height="142"></a></dt>
+    <dd><a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a></dd>
+  </dl>{% endif %}{% endfor %}
+</div>

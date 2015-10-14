@@ -1,0 +1,26 @@
+url: http://www.angusafes.com
+
+title: ANGU SAFE
+
+keywords: ANGU SAFE
+
+description: Anggun Safe Manufacturing Co., Ltd. was established in 2013, specialized in the safe manufacturing, processing and sales.
+
+permalink: /products/:title.html
+
+relative_permalinks: false
+
+exclude:
+  - README.md
+
+assets:
+  dirname: assets
+  baseurl: /assets/
+  sources:
+    - _assets/js
+    - _assets/css
+  js_compressor: uglifier
+  css_compressor: sass
+  cache: true
+  cache_assets: true
+  gzip: []

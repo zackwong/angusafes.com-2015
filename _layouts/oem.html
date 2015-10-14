@@ -1,0 +1,19 @@
+---
+layout: pages
+---
+<div class="left">
+  <div class="block">
+    <h1>OEM</h1>
+    <ul>
+      <li><a class="{% if page.type == 'oem' %}active{% endif %}" href="{{ site.url }}/oem/">OEM</a></li>
+    </ul>
+  </div>
+</div>
+<div class="right">
+  <h1 class="title">{{ page.title }}</h1>
+  <div class="con clearfix">
+    <div class="con-html">
+      {{ content }}
+    </div>
+  </div>
+</div>

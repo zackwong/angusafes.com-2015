@@ -1,0 +1,20 @@
+---
+layout: pages
+---
+<div class="left">
+  <div class="block">
+    <h1>ABOUT US</h1>
+    <ul>
+      <li><a class="{% if page.type == 'company-profile' %}active{% endif %}" href="{{ site.url }}/company-profile/">Company Profile</a></li>
+      <li><a class="{% if page.type == 'photo-gallery' %}active{% endif %}" href="{{ site.url }}/photo-gallery/">Photo Gallery</a></li>
+    </ul>
+  </div>
+</div>
+<div class="right">
+  <h1 class="title">{{ page.title }}</h1>
+  <div class="con clearfix">
+    <div class="con-html">
+      {{ content }}
+    </div>
+  </div>
+</div>
