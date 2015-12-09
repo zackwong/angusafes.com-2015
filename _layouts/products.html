@@ -63,13 +63,8 @@ layout: pages
         </ul>
       </li>
       <li><a class="{% if page.type == 'drawer-safe' %}active{% endif %}" href="{{ site.url }}/drawer-safe/">DRAWER SAFE</a></li>
-      <li>
-        <a class="{% if page.type == 'hotel-safes' %}active{% endif %}" href="{{ site.url }}/hotel-safes/">+ HOTEL SAFE</a>
-        <ul class="nav_tree_two" style='display:{% if page.type == 'hotel-safe' or page.type == 'depository-locker' %}block{% else %}none{% endif %};'>
-          <li><a class="{% if page.type == 'hotel-safe' %}active{% endif %}" href="{{ site.url }}/hotel-safe/">HOTEL SAFE</a></li>
-          <li><a class="{% if page.type == 'depository-locker' %}active{% endif %}" href="{{ site.url }}/depository-locker/">DEPOSITORY LOCKER</a></li>
-        </ul>
-      </li>
+      <li><a class="{% if page.type == 'hotel-safe' %}active{% endif %}" href="{{ site.url }}/hotel-safe/">HOTEL SAFE</a></li>
+      <li><a class="{% if page.type == 'safe-deposit-box' %}active{% endif %}" href="{{ site.url }}/safe-deposit-box/">SAFE DEPOSIT BOX</a></li>
       <li><a class="{% if page.type == 'wall-safe' %}active{% endif %}" href="{{ site.url }}/wall-safe/">WALL SAFE</a></li>
       <li><a class="{% if page.type == 'in-floor-safe' %}active{% endif %}" href="{{ site.url }}/in-floor-safe/">IN FLOOR SAFE</a></li>
       <li><a class="{% if page.type == 'vault-door' %}active{% endif %}" href="{{ site.url }}/vault-door/">VAULT DOOR</a></li>
